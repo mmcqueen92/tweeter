@@ -1,0 +1,47 @@
+/* COMPOSE TWEET TITLE - UPPER HALF OF NEW TWEET CONTAINER */
+.compose-tweet {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+}
+
+
+/* LOWER HALF OF NEW TWEET CONTAINER */
+.new-tweet-lower {
+  display: flex;
+  justify-content: center;
+  flex-grow: 2;
+}
+
+
+/* FORM CONTENT IN LOWER HALF OF NEW TWEET */
+.new-tweet-form {
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+}
+
+
+/* NEW TWEET INPUT - UPPER HALF OF THE LOWER HALF */
+.new-tweet-top {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 3px solid darkslategrey;
+}
+
+
+/* BUTTON AND CHARACTER COUNT */
+.new-tweet-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: "Bungee";
+}
+
+
+/* BUTTON DETAILS */
+.new-tweet-bottom > button {
+  background-color: #4056a1;
+  color: #ffffff;
+}
+
