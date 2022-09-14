@@ -9,8 +9,9 @@ $(document).ready(function() {
   const textBox = $('#tweet-text');
   $(textBox).on("input", function (evt) {
     let chars = $(this).val().length;
-    let remaining = 140 - chars;
-    console.log(remaining);
+    let charLimit = 140 - chars;
+    let counter = $(this).parent().next('div').children('.counter')
+    counter.text(charLimit);
   })
 });
 
