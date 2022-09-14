@@ -19,7 +19,7 @@
   display: flex;
   width: 90%;
   flex-direction: column;
-  padding: 10px;
+  padding: 20px;
 }
 
 
@@ -44,6 +44,7 @@
 .new-tweet-bottom>button {
   background-color: #4056a1;
   color: #ffffff;
+  margin: 5px;
 }
 
 
@@ -52,11 +53,15 @@
   color: red;
 }
 
+/*  */
+
+/* NEW STUFF BELOW*/
+
 .tweet-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
 }
 
 .tweet-container>article {
@@ -112,4 +117,12 @@
 
 .icon {
   margin: 5px;
+}
+
+.has-box-shadow {
+  box-shadow: 5px 5px;
+}
+
+.icon-hover {
+  color: #3388cc;
 }
