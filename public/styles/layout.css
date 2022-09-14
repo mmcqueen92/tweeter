@@ -50,4 +50,6 @@ main {
   display: flex;
   flex-direction: column;
   width: 100%;
+  background-color: #008c41;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
 }

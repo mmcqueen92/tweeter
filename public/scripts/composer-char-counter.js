@@ -12,6 +12,12 @@ $(document).ready(function() {
     let charLimit = 140 - chars;
     let counter = $(this).parent().next('div').children('.counter')
     counter.text(charLimit);
+
+    if (charLimit < 0) {
+      counter.addClass('text-color-red');
+    } else if (charLimit >= 0) {
+      counter.removeClass('text-color-red');
+    }
   })
 });
 

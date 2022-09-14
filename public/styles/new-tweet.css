@@ -19,6 +19,7 @@
   display: flex;
   width: 90%;
   flex-direction: column;
+  padding: 10px;
 }
 
 
@@ -40,8 +41,75 @@
 
 
 /* BUTTON DETAILS */
-.new-tweet-bottom > button {
+.new-tweet-bottom>button {
   background-color: #4056a1;
   color: #ffffff;
 }
 
+
+/* RED TEXT */
+.text-color-red {
+  color: red;
+}
+
+.tweet-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.tweet-container>article {
+  display: flex;
+  width: 90%;
+  background-color: white;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid darkslategray 5px;
+  padding: 10px;
+}
+
+.tweet-container>article>header {
+  display: flex;
+  height: 70px;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white;
+  margin: 5px;
+  width: 95%;
+}
+
+.tweet-body {
+  display: flex;
+  border-bottom: 3px solid darkslategrey;
+  color: red;
+  font-family: "Source Sans Pro";
+  flex-direction: column;
+  margin: 10px;
+}
+
+.tweet-container>article>footer {
+  display: flex;
+  height: 70px;
+  flex-direction: row;
+  justify-content: space-between;
+  background: white;
+  width: 95%;
+  align-items: center;
+}
+
+.profPic {
+  display: flex;
+  align-items: center;
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+}
+
+.icon {
+  margin: 5px;
+}
