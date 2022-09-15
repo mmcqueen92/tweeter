@@ -18,6 +18,8 @@ $(() => {
   //   "created_at": 1461116232227
   // }
 
+  const $tweetContainer = $('.tweet-container');
+
   const data = [
     {
       "user": {
@@ -50,16 +52,16 @@ $(() => {
     <article class="tweet">
       <header>
         <div class="tweet-header-left">
-          <div class="profPic">${tweet.user.avatars}</div>
-          <div class="userName">${tweet.user.name}</div>
+          <div class="header-element">${tweet.user.avatars}</div>
+          <div class="header-element">${tweet.user.name}</div>
         </div>
-        <div class="handle">${tweet.user.handle}</div>
+        <div class="header-element">${tweet.user.handle}</div>
       </header>
 
       <div class="tweet-body">${tweet.content.text}</div>
 
       <footer>
-       <div class="date-posted">${tweet.user.avatars}</div>
+       <div class="date-posted">${tweet.created_at}</div>
         <div class="icons">
           <i class="fa-regular fa-flag icon icon1"></i>
           <i class="fa-solid fa-retweet icon icon2"></i>
@@ -72,8 +74,20 @@ $(() => {
     return $tweet;
   }
 
-  console.log($tweet); // to see what it looks like
+  const renderTweet = (tweets) => {
+    // loops through tweets
+    for (const tweet of tweets) {
+      // calls createTweetElement for each tweet
+      const $tweet = createTweetElement(tweet)
+      $tweetContainer.prepend($tweet);
+    }
+    // takes return value and appends it to the tweets container
+  }
 
-  $('.tweet-container').append($tweet);
+  renderTweet(data);
+
+  // console.log($tweet); // to see what it looks like
+
+  // $('.tweet-container').append($tweet);
 
 });

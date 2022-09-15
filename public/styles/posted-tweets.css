@@ -1,0 +1,90 @@
+/* TWEET CONTAINER */
+
+.tweet-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ARTICLES INSIDE TWEET-CONTAINER */
+
+.tweet-container>article {
+  display: flex;
+  width: 90%;
+  background-color: white;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid darkslategray 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+/* HEADERS INSIDE OF ARTICLES INSIDE OF TWEET-CONTAINER */
+
+.tweet-container>article>header {
+  display: flex;
+  height: 70px;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white;
+  margin: 5px;
+  width: 95%;
+}
+
+/* TWEET BODY */
+
+.tweet-body {
+  display: flex;
+  border-bottom: 3px solid darkslategrey;
+  color: red;
+  font-family: "Source Sans Pro";
+  flex-direction: column;
+  margin: 10px;
+  width: 90%;
+}
+
+/* FOOTERS INSIDE OF ARTICLES INSIDE OF TWEET-CONTAINER */
+
+.tweet-container>article>footer {
+  display: flex;
+  height: 70px;
+  flex-direction: row;
+  justify-content: space-between;
+  background: white;
+  width: 95%;
+  align-items: center;
+}
+
+/* HEADER ELEMENTS */
+
+.header-element {
+  display: flex;
+  align-items: center;
+  border: dashed 3px black;
+}
+
+/* ICONS CONTAINER - FOUND INSIDE OF FOOTER */
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+}
+
+/* ICONS WITHIN ICONS CONTAINER */
+.icon {
+  margin: 5px;
+}
+
+/* FOR USE IN ON-HOVER BOX SHADOW */
+
+.has-box-shadow {
+  box-shadow: 5px 5px;
+}
+
+/* FOR USE IN ON-HOVER ICON HIGHLIGHT */
+.icon-hover {
+  color: #3388cc;
+}
