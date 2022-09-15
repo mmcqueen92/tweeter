@@ -84,6 +84,7 @@ $(() => {
     // takes return value and appends it to the tweets container
   };
 
+
   const loadTweets = () => {
     
   }
@@ -99,6 +100,12 @@ $(() => {
 
     $.post('/tweets', serializedData, (response) => {
       console.log('response: ', response);
+    })
+
+    $.ajax('/tweets', { method: 'GET' })
+    .then((getResponse) => {
+      console.log('GET response: ', getResponse)
+      renderTweet(getResponse);
     })
 
   })
