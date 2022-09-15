@@ -5,11 +5,12 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
+
 }
 
 /* ARTICLES INSIDE TWEET-CONTAINER */
 
-.tweet-container>article {
+.tweet {
   display: flex;
   width: 90%;
   background-color: white;
@@ -23,7 +24,7 @@
 
 /* HEADERS INSIDE OF ARTICLES INSIDE OF TWEET-CONTAINER */
 
-.tweet-container>article>header {
+.tweet > header {
   display: flex;
   height: 70px;
   flex-direction: row;
@@ -40,7 +41,7 @@
   border-bottom: 3px solid darkslategrey;
   color: red;
   font-family: "Source Sans Pro";
-  flex-direction: column;
+  flex-direction: row;
   margin: 10px;
   width: 90%;
 }

@@ -6,62 +6,57 @@
 $(() => {
   console.log('document loaded');
 
-  // const tweetData = {
-  //   "user": {
-  //     "name": "Newton",
-  //     "avatars": "https://i.imgur.com/73hZDYK.png",
-  //     "handle": "@SirIsaac"
-  //   },
-  //   "content": {
-  //     "text": "If I have seen further it is by standing on the shoulders of giants"
-  //   },
-  //   "created_at": 1461116232227
-  // }
-
   const $tweetContainer = $('.tweet-container');
 
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ]
+  // const data = [
+  //   {
+  //     "user": {
+  //       "name": "Newton",
+  //       "avatars": "https://i.imgur.com/73hZDYK.png"
+  //       ,
+  //       "handle": "@SirIsaac"
+  //     },
+  //     "content": {
+  //       "text": "If I have seen further it is by standing on the shoulders of giants"
+  //     },
+  //     "created_at": 1461116232227
+  //   },
+  //   {
+  //     "user": {
+  //       "name": "Descartes",
+  //       "avatars": "https://i.imgur.com/nlhLi3I.png",
+  //       "handle": "@rd"
+  //     },
+  //     "content": {
+  //       "text": "Je pense , donc je suis"
+  //     },
+  //     "created_at": 1461113959088
+  //   }
+  // ]
 
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
 
   const createTweetElement = (tweet) => {
+    const date = tweet.created_at;
+    let timePassedSince = timeago.format(date);
     let $tweet = $(`
     <article class="tweet">
       <header>
         <div class="tweet-header-left">
-          <div class="header-element">${tweet.user.avatars}</div>
-          <div class="header-element">${tweet.user.name}</div>
+          <div class="header-element">${escape(tweet.user.avatars)}</div>
+          <div class="header-element">${escape(tweet.user.name)}</div>
         </div>
-        <div class="header-element">${tweet.user.handle}</div>
+        <div class="header-element">${escape(tweet.user.handle)}</div>
       </header>
 
-      <div class="tweet-body">${tweet.content.text}</div>
+      <div class="tweet-body">${escape(tweet.content.text)}</div>
 
       <footer>
-       <div class="date-posted">${tweet.created_at}</div>
+       <div class="date-posted">${escape(timePassedSince)}</div>
         <div class="icons">
           <i class="fa-regular fa-flag icon icon1"></i>
           <i class="fa-solid fa-retweet icon icon2"></i>
@@ -76,6 +71,7 @@ $(() => {
 
   const renderTweet = (tweets) => {
     // loops through tweets
+    $tweetContainer.empty();
     for (const tweet of tweets) {
       // calls createTweetElement for each tweet
       const $tweet = createTweetElement(tweet)
@@ -86,39 +82,38 @@ $(() => {
 
 
   const loadTweets = () => {
-    
+    $.ajax('/tweets', { method: 'GET' })
+      .then((getResponse) => {
+        renderTweet(getResponse);
+      })
   }
 
-
+  
   const $form = $('.new-tweet-form');
 
-  $form.submit((event) => {
+  $form.submit(function(event) {
     event.preventDefault();
-
+    
     const serializedData = $form.serialize();
-    console.log(serializedData);
 
-    $.post('/tweets', serializedData, (response) => {
-      console.log('response: ', response);
-    })
+    const tweetContent = $(this).children().find('textarea').val();
 
-    $.ajax('/tweets', { method: 'GET' })
-    .then((getResponse) => {
-      console.log('GET response: ', getResponse)
-      renderTweet(getResponse);
-    })
-
+    if (!tweetContent) {
+      return alert('Tweet must be more than 0 characters.');
+    } else if (tweetContent.length > 140) {
+      return alert('Character limit exceeded.');
+    } else if (tweetContent && tweetContent.length <=140 ) {
+      $.post('/tweets', serializedData, (response) => {
+        console.log('response: ', response);
+      })
+      loadTweets();
+    }
   })
+  
 
 
-
-
-
-
-
-
-  renderTweet(data);
-
-
-
+  loadTweets();
+  
+  
+  
 });
