@@ -82,12 +82,36 @@ $(() => {
       $tweetContainer.prepend($tweet);
     }
     // takes return value and appends it to the tweets container
+  };
+
+  const loadTweets = () => {
+    
   }
+
+
+  const $form = $('.new-tweet-form');
+
+  $form.submit((event) => {
+    event.preventDefault();
+
+    const serializedData = $form.serialize();
+    console.log(serializedData);
+
+    $.post('/tweets', serializedData, (response) => {
+      console.log('response: ', response);
+    })
+
+  })
+
+
+
+
+
+
+
 
   renderTweet(data);
 
-  // console.log($tweet); // to see what it looks like
 
-  // $('.tweet-container').append($tweet);
 
 });
