@@ -1,0 +1,20 @@
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-slider {
+  display: none;
+  width: 85%;
+}
+
+.error-message {
+  display: flex;
+  border: red dashed 1px;
+  color: red;
+  width: 100%;
+  justify-content: space-evenly;
+  background-color: white;
+  align-items: center;
+}

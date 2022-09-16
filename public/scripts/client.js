@@ -7,32 +7,7 @@ $(() => {
   console.log('document loaded');
 
   const $tweetContainer = $('.tweet-container');
-
-  // const data = [
-  //   {
-  //     "user": {
-  //       "name": "Newton",
-  //       "avatars": "https://i.imgur.com/73hZDYK.png"
-  //       ,
-  //       "handle": "@SirIsaac"
-  //     },
-  //     "content": {
-  //       "text": "If I have seen further it is by standing on the shoulders of giants"
-  //     },
-  //     "created_at": 1461116232227
-  //   },
-  //   {
-  //     "user": {
-  //       "name": "Descartes",
-  //       "avatars": "https://i.imgur.com/nlhLi3I.png",
-  //       "handle": "@rd"
-  //     },
-  //     "content": {
-  //       "text": "Je pense , donc je suis"
-  //     },
-  //     "created_at": 1461113959088
-  //   }
-  // ]
+  const $errorContainer = $('.error-container')
 
   const escape = function (str) {
     let div = document.createElement("div");
@@ -47,7 +22,10 @@ $(() => {
     <article class="tweet">
       <header>
         <div class="tweet-header-left">
-          <div class="header-element">${escape(tweet.user.avatars)}</div>
+          <div class="header-element">
+            <img src=${escape(tweet.user.avatars)}>
+          
+          </div>
           <div class="header-element">${escape(tweet.user.name)}</div>
         </div>
         <div class="header-element">${escape(tweet.user.handle)}</div>
@@ -69,15 +47,32 @@ $(() => {
     return $tweet;
   }
 
+  const createErrorElement = (errorMsg) => {
+
+    let $errorContent = $(`
+          <div class="error-slider">
+            <div class="error-message">
+              <i class="fa-sharp fa-solid fa-triangle-exclamation"></i>
+              <h4>${errorMsg}</h4>
+              <i class="fa-sharp fa-solid fa-triangle-exclamation"></i>
+            </div>
+           </div>
+        `)
+
+    return $errorContent;
+  };
+
   const renderTweet = (tweets) => {
-    // loops through tweets
+    // empties tweet-container
     $tweetContainer.empty();
+
+    // calls createTweetElement for each tweet
     for (const tweet of tweets) {
-      // calls createTweetElement for each tweet
       const $tweet = createTweetElement(tweet)
+
+      // takes return value and appends it to the tweets container
       $tweetContainer.prepend($tweet);
     }
-    // takes return value and appends it to the tweets container
   };
 
 
@@ -88,32 +83,81 @@ $(() => {
       })
   }
 
-  
+
   const $form = $('.new-tweet-form');
 
-  $form.submit(function(event) {
+  $form.submit(function (event) {
     event.preventDefault();
-    
-    const serializedData = $form.serialize();
+    $('.error-slider').slideUp("slow");
+    let errorFunction = () => {
 
-    const tweetContent = $(this).children().find('textarea').val();
+      const serializedData = $form.serialize();
 
-    if (!tweetContent) {
-      return alert('Tweet must be more than 0 characters.');
-    } else if (tweetContent.length > 140) {
-      return alert('Character limit exceeded.');
-    } else if (tweetContent && tweetContent.length <=140 ) {
-      $.post('/tweets', serializedData, (response) => {
-        console.log('response: ', response);
-      })
-      loadTweets();
+      const tweetContent = $(this).children().find('textarea').val();
+
+      
+      if (!tweetContent) {
+        // EMPTY TWEET
+        console.log("error happened")
+
+
+        // EMPTY ERROR CONTAINER
+        $errorContainer.empty();
+
+        // CREATE RELEVANT errObj
+        let errMsg = "Error: Tweet cannot be empty.";
+
+        // CALL createErrorElement(errMsg)
+        const $error = createErrorElement(errMsg)
+
+        // CHANGE ERROR-CONTAINER CONTENT TO RELEVANT ERROR MESSAGE
+        $errorContainer.append($error);
+
+        // SLIDEDOWN ERROR MESSAGE
+        $('.error-slider').slideDown("slow");
+
+        
+      } else if (tweetContent.length > 140) {
+        // CHARACTER LIMIT EXCEEDED
+
+        $errorContainer.empty();
+        let errMsg = "Error: Character limit exceeded.";
+        const $error = createErrorElement(errMsg)
+        $errorContainer.append($error);
+        $('.error-slider').slideDown("slow");
+
+        
+      } else if (tweetContent && tweetContent.length <= 140) {
+        //HAPPY PATH
+
+        $.post('/tweets', serializedData);
+        loadTweets();
+      }
+
+
+
+
     }
+    errorFunction();
   })
-  
 
 
   loadTweets();
-  
-  
-  
+
+
+
 });
+
+// $(document).ready(function() {
+//   // --- our code goes here ---
+//   const icon1 = $('.icon1');
+//   const $hiddenElement = $('.hiddenElement')
+//   $hiddenElement.
+//   $(icon1).hover(function (evt) {
+//     let JQicon1 = $(icon1);
+//     JQicon1.addClass('icon-hover')
+//   }, () => {
+//     let JQicon1 = $(icon1);
+//     JQicon1.removeClass('icon-hover')
+//   })
+// });
