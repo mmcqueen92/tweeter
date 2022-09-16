@@ -5,11 +5,43 @@ header {
   align-items: center;
   height: 520px;
   width: 100%;
-  background-color: #008c41;
-  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  /* background-color: #008c41;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png"); */
  }
 
  header > div {
   display: flex;
   /* border: dotted black */
  }
+
+ .avatar {
+  display:flex;
+  flex-direction: column;
+  width:100%;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #008c41;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+}
+
+.prof-pic {
+  display: flex;
+  padding-top: 20px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .big-container {
+    flex-direction: row;
+    align-items: center;
+  }
+  .error-container {
+    padding-top: 120px;
+  }
+  .avatar {
+    display:flex;
+    background-color: #008c41;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+    width: 450px;
+    height: 450px;
+  }
+}

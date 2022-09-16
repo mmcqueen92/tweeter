@@ -24,9 +24,13 @@
   <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
   <link rel="stylesheet" href="/styles/posted-tweets.css" type="text/css" />
   <link rel="stylesheet" href="/styles/errors.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/responsive-designs.css" type="text/css" />
+
   <!-- External JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
+    integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- JQUERY -->
   <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
     crossorigin="anonymous"></script>
@@ -46,34 +50,39 @@
       <i class="fa-solid fa-angles-down"></i>
     </div>
   </nav>
-  <header>
-    <div>
-      <img src="/images/profile-hex.png">
-    </div>
-    <br>
-    <div>
-      <h2>Your Name</h2>
-    </div>
-  </header>
-  <!-- Page-specific (main) content here -->
-  <main class="container">
-    <div class="error-container">
-      <body></body>
-    </div>
-    <div class="new-tweet-lower">
-      <form class="new-tweet-form" action="/tweets" method="POST">
-        <div class="new-tweet-top">
-          <textarea placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>
+  <div class="big-container">
+    <header class="profile">
+      <div class="avatar">
+        <div class="prof-pic">
+          <img src="/images/profile-hex.png">
         </div>
-        <div class="new-tweet-bottom">
-          <button class="tweet-button" type="submit">Tweet</button>
-          <output name="counter" class="counter" for="tweet-text">140</output>
+        <br>
+        <div>
+          <h2>Your Name</h2>
         </div>
-      </form>
-    </div>
-    <section class="tweet-container">
-    </section>
-  </main>
+      </div>
+    </header>
+    <!-- Page-specific (main) content here -->
+    <main class="container">
+      <div class="error-container">
+
+        <body></body>
+      </div>
+      <div class="new-tweet-lower">
+        <form class="new-tweet-form" action="/tweets" method="POST">
+          <div class="new-tweet-top">
+            <textarea placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>
+          </div>
+          <div class="new-tweet-bottom">
+            <button class="tweet-button" type="submit">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </div>
+      <section class="tweet-container">
+      </section>
+    </main>
+  </div>
 </body>
 
 </html>
