@@ -20,10 +20,10 @@ $(() => {
     let timePassedSince = timeago.format(date);
     let $tweet = $(`
     <article class="tweet">
-      <header>
+      <header class="tweet-header">
         <div class="tweet-header-left">
           <div class="header-element">
-            <img src=${escape(tweet.user.avatars)}>
+            <img class="pic" src=${escape(tweet.user.avatars)}>
           
           </div>
           <div class="header-element">${escape(tweet.user.name)}</div>

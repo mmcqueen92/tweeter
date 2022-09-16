@@ -3,15 +3,9 @@ header {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  height: 520px;
+  height: 350px;
   width: 100%;
-  /* background-color: #008c41;
-  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png"); */
- }
-
- header > div {
-  display: flex;
-  /* border: dotted black */
+  font-size: 18px;
  }
 
  .avatar {
@@ -24,24 +18,111 @@ header {
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
 }
 
+header > div {
+  display:flex;
+}
+
 .prof-pic {
   display: flex;
-  padding-top: 20px;
+  align-items: flex-end;
 }
+
+.username {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+#prof-pic-image {
+  height: auto; 
+  width: auto; 
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.profile {
+  background-color: #008c41;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  height: 250px;
+}
+
+/* TABLET LAYOUT */
+
+@media only screen and (min-width: 768px) {
+  .avatar {
+    width: 250px;
+    height: 250px;
+  }
+  .big-container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .error-container {
+    padding-top: 150px;
+  }
+  .username {
+    display: flex;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  .profile {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    background-color: whitesmoke;
+    width: 300px;
+    height: 360px;
+    padding-left: 20px;
+  }
+  .prof-pic {
+    display: flex;
+    align-items:flex-start;
+    margin-top: 50px;
+  }
+  #prof-pic-image {
+    height: auto; 
+    width: auto; 
+    max-width: 180px; 
+    max-height: 180px;
+  }
+  header {
+    height: 400px;
+  }
+}
+
+/* DESKTOP LAYOUT */
 
 @media only screen and (min-width: 1024px) {
   .big-container {
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
   }
   .error-container {
-    padding-top: 120px;
+    padding-top: 150px;
   }
   .avatar {
     display:flex;
-    background-color: #008c41;
-    background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
     width: 450px;
     height: 450px;
+
+  }
+  .profile {
+    display: flex;
+    margin-top: 200px;
+    width: 75%;
+    height: 450px;
+  }
+
+  #prof-pic-image {
+    height: 125%; 
+    width: 125%; 
+    max-width: 325px; 
+    max-height: 325px;
+    margin-bottom: 60px;   
+  }
+  .username {
+    display: flex;
+    font-size: 24px;
+    margin-bottom: 30px;
   }
 }

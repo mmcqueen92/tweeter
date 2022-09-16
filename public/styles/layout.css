@@ -24,7 +24,7 @@ body {
   align-items: center;
   color: #545149;
   background-color: #f4f1ec;
-  font-size: 24px;
+  font-size: 18px;
   font-family: "Source Sans Pro", sans-serif;
 }
 
@@ -58,12 +58,9 @@ main {
   flex-direction: column;
   width:100%;
 }
-/* TABLET LAYOUT */
 
-@media only screen and (min-width: 768px) {
-  
+@media only screen and (min-width: 1024px) {
+  body {
+    font-size: 24px;
+  }
 }
-
-
-/* DESKTOP LAYOUT */
-

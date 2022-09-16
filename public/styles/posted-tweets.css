@@ -18,20 +18,23 @@
   justify-content: center;
   align-items: center;
   border: solid darkslategray 5px;
-  padding: 10px;
+  padding: 2px;
   margin: 10px;
+  font-size: 14px;
 }
 
 /* HEADERS INSIDE OF ARTICLES INSIDE OF TWEET-CONTAINER */
 
 .tweet > header {
   display: flex;
-  height: 70px;
+  height: 40px;
   flex-direction: row;
   justify-content: space-between;
   background-color: white;
   margin: 5px;
   width: 95%;
+  padding: 0px;
+  margin: 0px;
 }
 
 /* TWEET BODY */
@@ -39,7 +42,7 @@
 .tweet-body {
   display: flex;
   border-bottom: 3px solid darkslategrey;
-  color: red;
+  color: black;
   font-family: "Source Sans Pro";
   flex-direction: row;
   margin: 10px;
@@ -50,7 +53,7 @@
 
 .tweet-container>article>footer {
   display: flex;
-  height: 70px;
+  height: 30px;
   flex-direction: row;
   justify-content: space-between;
   background: white;
@@ -63,7 +66,12 @@
 .header-element {
   display: flex;
   align-items: center;
-  border: dashed 3px black;
+  /* border: dashed 3px black; */
+  margin: 5px;
+  word-wrap:normal;
+  font-size: 14px;
+  padding: 1px;
+  margin: 1px;
 }
 
 /* ICONS CONTAINER - FOUND INSIDE OF FOOTER */
@@ -88,4 +96,42 @@
 /* FOR USE IN ON-HOVER ICON HIGHLIGHT */
 .icon-hover {
   color: #3388cc;
+}
+
+.pic {
+  max-width: 40px;
+  max-height: 40px;
+}
+
+/* TABLET LAYOUT */
+
+@media only screen and (min-width: 768px) {
+  .pic {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .header-element {
+    font-size: 18px;
+  }
+  .tweet {
+    font-size: 18px;
+  }
+  .tweet > header {
+    height: 70px;
+  }
+  .tweet-container>article>footer {
+    height: 50px;
+  }
+
+}
+
+/* DESKTOP LAYOUT */
+
+@media only screen and (min-width: 1024px) {
+  .header-element {
+    font-size: 24px;
+  }
+  .tweet {
+    font-size: 24px;
+  }
 }
