@@ -23,6 +23,9 @@
   font-size: 14px;
 }
 
+.tweet:hover {
+  box-shadow: 5px 5px; }
+
 /* HEADERS INSIDE OF ARTICLES INSIDE OF TWEET-CONTAINER */
 
 .tweet > header {
@@ -66,7 +69,6 @@
 .header-element {
   display: flex;
   align-items: center;
-  /* border: dashed 3px black; */
   margin: 5px;
   word-wrap:normal;
   font-size: 14px;
@@ -83,20 +85,18 @@
 }
 
 /* ICONS WITHIN ICONS CONTAINER */
+
 .icon {
   margin: 5px;
 }
 
-/* FOR USE IN ON-HOVER BOX SHADOW */
+/* ICON HIGHLIGHT ON HOVER */
 
-.has-box-shadow {
-  box-shadow: 5px 5px;
-}
-
-/* FOR USE IN ON-HOVER ICON HIGHLIGHT */
-.icon-hover {
+.icon:hover {
   color: #3388cc;
 }
+
+/* POSTED TWEETS AVATAR IMAGE */
 
 .pic {
   max-width: 40px;
