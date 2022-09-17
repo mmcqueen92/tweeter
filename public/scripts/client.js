@@ -15,6 +15,15 @@ $(() => {
     return div.innerHTML;
   };
 
+// CLICK ON "WRITE NEW TWEET" FOCUS SHIFT TO FORM //
+
+  $(".writeNewTweet").click(function(){
+    $(".tweet-input").focus();
+    // $("p").html("focus event triggered");
+  });  
+
+// ----------------------------------------------
+
   const createTweetElement = (tweet) => {
     const date = tweet.created_at;
     let timePassedSince = timeago.format(date);
@@ -85,26 +94,23 @@ $(() => {
 
 
   const $form = $('.new-tweet-form');
-
+  
   $form.submit(function (event) {
     event.preventDefault();
     $('.error-slider').slideUp("slow");
+    
     let errorFunction = () => {
-
+      
       const serializedData = $form.serialize();
-
+  
       const tweetContent = $(this).children().find('textarea').val();
-
       
       if (!tweetContent) {
-        // EMPTY TWEET
-        console.log("error happened")
-
 
         // EMPTY ERROR CONTAINER
         $errorContainer.empty();
 
-        // CREATE RELEVANT errObj
+        // CREATE RELEVANT errMsg
         let errMsg = "Error: Tweet cannot be empty.";
 
         // CALL createErrorElement(errMsg)
@@ -130,13 +136,12 @@ $(() => {
       } else if (tweetContent && tweetContent.length <= 140) {
         //HAPPY PATH
 
-        $.post('/tweets', serializedData);
-        loadTweets();
+        $('.new-tweet-form')[0].reset();
+
+        $.post('/tweets', serializedData).then(() => {
+          loadTweets();
+        })
       }
-
-
-
-
     }
     errorFunction();
   })
@@ -147,17 +152,3 @@ $(() => {
 
 
 });
-
-// $(document).ready(function() {
-//   // --- our code goes here ---
-//   const icon1 = $('.icon1');
-//   const $hiddenElement = $('.hiddenElement')
-//   $hiddenElement.
-//   $(icon1).hover(function (evt) {
-//     let JQicon1 = $(icon1);
-//     JQicon1.addClass('icon-hover')
-//   }, () => {
-//     let JQicon1 = $(icon1);
-//     JQicon1.removeClass('icon-hover')
-//   })
-// });
