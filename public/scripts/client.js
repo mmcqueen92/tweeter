@@ -4,8 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 $(() => {
-  console.log('document loaded');
-
   const $tweetContainer = $('.tweet-container');
   const $errorContainer = $('.error-container')
 
@@ -15,14 +13,14 @@ $(() => {
     return div.innerHTML;
   };
 
-// CLICK ON "WRITE NEW TWEET" FOCUS SHIFT TO FORM //
+  // CLICK ON "WRITE NEW TWEET" FOCUS SHIFT TO FORM //
 
-  $(".writeNewTweet").click(function(){
+  $(".writeNewTweet").click(function () {
     $(".tweet-input").focus();
     // $("p").html("focus event triggered");
-  });  
+  });
 
-// ----------------------------------------------
+  // ----------------------------------------------
 
   const createTweetElement = (tweet) => {
     const date = tweet.created_at;
@@ -94,17 +92,17 @@ $(() => {
 
 
   const $form = $('.new-tweet-form');
-  
+
   $form.submit(function (event) {
     event.preventDefault();
     $('.error-slider').slideUp("slow");
-    
+
     let errorFunction = () => {
-      
+
       const serializedData = $form.serialize();
-  
+
       const tweetContent = $(this).children().find('textarea').val();
-      
+
       if (!tweetContent) {
 
         // EMPTY ERROR CONTAINER
@@ -122,7 +120,7 @@ $(() => {
         // SLIDEDOWN ERROR MESSAGE
         $('.error-slider').slideDown("slow");
 
-        
+
       } else if (tweetContent.length > 140) {
         // CHARACTER LIMIT EXCEEDED
 
@@ -132,23 +130,18 @@ $(() => {
         $errorContainer.append($error);
         $('.error-slider').slideDown("slow");
 
-        
+
       } else if (tweetContent && tweetContent.length <= 140) {
         //HAPPY PATH
 
         $('.new-tweet-form')[0].reset();
 
         $.post('/tweets', serializedData).then(() => {
-          loadTweets();
+          loadTweets()
         })
       }
     }
     errorFunction();
   })
-
-
   loadTweets();
-
-
-
 });
