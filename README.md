@@ -19,4 +19,6 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Final Product
 
-!["screenshot description](screenshot url from github)
+!["desktop design"](https://github.com/mmcqueen92/tweeter/blob/master/docs/desktop-render.png?raw=true)
+!["tablet design"](https://github.com/mmcqueen92/tweeter/blob/master/docs/tablet-render.png?raw=true)
+!["phone design"](https://github.com/mmcqueen92/tweeter/blob/master/docs/phone-render.png?raw=true)
