@@ -1,3 +1,4 @@
+/* GENERAL HEADER RULES */
 header {
   display: flex;
   flex-direction: column;
@@ -7,7 +8,15 @@ header {
   width: 100%;
   font-size: 18px;
  }
+ 
+ /* HEADER THAT CONTAINS AVATAR DIV */
+ .profile {
+   background-color: #008c41;
+   background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+   height: 250px;
+ }
 
+ /* CONTAINS PROFILE PICTURE AND USERNAME */
  .avatar {
   display:flex;
   flex-direction: column;
@@ -18,21 +27,25 @@ header {
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
 }
 
+/* ALL DIVS WITHIN HEADER ARE FLEX BY DEFAULT */
 header > div {
   display:flex;
 }
 
+/* DIV THAT CONTAINS THE PROF PIC IMAGE */
 .prof-pic {
   display: flex;
   align-items: flex-end;
 }
 
+/* USERNAME HEADER */
 .username {
   margin-top: 0px;
   margin-bottom: 20px;
   font-size: 20px;
 }
 
+/* PROFILE PICTURE IMAGE */
 #prof-pic-image {
   height: auto; 
   width: auto; 
@@ -40,11 +53,6 @@ header > div {
   max-height: 100px;
 }
 
-.profile {
-  background-color: #008c41;
-  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
-  height: 250px;
-}
 
 /* TABLET LAYOUT */
 

@@ -46,6 +46,7 @@ main {
 * Additional CSS can be defined below or in other CSS files, as per instructions
 */
 
+/* CONTAINER FOR NEW TWEET FORM AND ERROR CONTAINER */
 .container {
   display: flex;
   flex-direction: column;
@@ -53,11 +54,14 @@ main {
 
 }
 
+/* BIG CONTAINER FOR THE HEADER (AVATAR) AND CONTAINER  */
 .big-container {
   display: flex;
   flex-direction: column;
   width:100%;
 }
+
+/* INCREASE FONT SIZE FOR DESKTOP */
 
 @media only screen and (min-width: 1024px) {
   body {

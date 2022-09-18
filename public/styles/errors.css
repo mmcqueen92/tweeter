@@ -1,14 +1,17 @@
+/* CONTAINS ERROR-SLIDER */
 .error-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* ELEMENT THAT SLIDES INTO VIEW ON ERROR */
 .error-slider {
   display: none;
   width: 85%;
 }
 
+/* CONTENT OF ERROR MESSAGE */
 .error-message {
   display: flex;
   border: red dashed 1px;
