@@ -6,6 +6,15 @@
 $(() => {
   const $tweetContainer = $('.tweet-container');
   const $errorContainer = $('.error-container')
+  const $form = $('.new-tweet-form');
+  
+    // CLICK ON "WRITE NEW TWEET" FOCUS SHIFT TO FORM //
+  
+    $(".writeNewTweet").click(function () {
+      $(".tweet-input").focus();
+    });
+
+// ESCAPE FUNCTION
 
   const escape = function (str) {
     let div = document.createElement("div");
@@ -13,14 +22,7 @@ $(() => {
     return div.innerHTML;
   };
 
-  // CLICK ON "WRITE NEW TWEET" FOCUS SHIFT TO FORM //
-
-  $(".writeNewTweet").click(function () {
-    $(".tweet-input").focus();
-    // $("p").html("focus event triggered");
-  });
-
-  // ----------------------------------------------
+  // CREATE POSTED TWEET FUNCTION
 
   const createTweetElement = (tweet) => {
     const date = tweet.created_at;
@@ -54,6 +56,8 @@ $(() => {
     return $tweet;
   }
 
+  // CREATE ERROR ELEMENT FUNCTION
+
   const createErrorElement = (errorMsg) => {
 
     let $errorContent = $(`
@@ -69,6 +73,8 @@ $(() => {
     return $errorContent;
   };
 
+  // LOOP THROUGH DATABASE AND ADD TWEET ELEMENTS TO TWEET CONTAINER
+
   const renderTweet = (tweets) => {
     // empties tweet-container
     $tweetContainer.empty();
@@ -82,6 +88,7 @@ $(() => {
     }
   };
 
+  // LOAD TWEETS
 
   const loadTweets = () => {
     $.ajax('/tweets', { method: 'GET' })
@@ -91,7 +98,7 @@ $(() => {
   }
 
 
-  const $form = $('.new-tweet-form');
+  
 
   $form.submit(function (event) {
     event.preventDefault();
@@ -100,6 +107,9 @@ $(() => {
     let errorFunction = () => {
 
       const serializedData = $form.serialize();
+
+
+      // FIND VALUE OF TEXT AREA IN THE NEW TWEET FORM
 
       const tweetContent = $(this).children().find('textarea').val();
 
@@ -134,14 +144,19 @@ $(() => {
       } else if (tweetContent && tweetContent.length <= 140) {
         //HAPPY PATH
 
+        // CLEAR NEW TWEET FORM
         $('.new-tweet-form')[0].reset();
 
+        // POST NEW TWEET TO DB
         $.post('/tweets', serializedData).then(() => {
+          //RELOAD TWEETS WITH NEW TWEET ADDED
           loadTweets()
         })
       }
     }
+    // RUN THE NEWLY CREATED FUNCTION
     errorFunction();
   })
+  // INITIAL LOAD TWEETS
   loadTweets();
 });
