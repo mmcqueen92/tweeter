@@ -146,9 +146,14 @@ $(() => {
 
         // CLEAR NEW TWEET FORM
         $('.new-tweet-form')[0].reset();
+        
+        // RESET CHAR COUNTER
+        let counter = $(this).children().find('output')
+        counter.text('140');
 
         // POST NEW TWEET TO DB
         $.post('/tweets', serializedData).then(() => {
+          
           //RELOAD TWEETS WITH NEW TWEET ADDED
           loadTweets()
         })
